@@ -13,8 +13,22 @@ terraform {
       source  = "hashicorp/random"
       version = "= 3.0.0"
     }
+    ephemeral = {
+       source = "terraform.shuttl.xyz/provider/ephemeral"
+    }
 
   }
 
 }
 
+provider "auth" {
+  vault {
+    address = "http://localhost:8200"
+  }
+}
+
+provider "ephemeral" {
+  github_org   = "Shuttl-Tech"
+  github_token = "adsfdf"
+  nomad_addr   = "http://localhost:4646"
+}
