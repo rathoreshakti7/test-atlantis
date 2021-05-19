@@ -1,1 +1,20 @@
 version: 3
+projects:
+  - dir: nested/test2/test3
+    workspace: staging
+
+workflows:
+  staging:
+    plan:
+      steps:
+      - env:
+          name: TF_WORKSPACE
+          command: 'echo "$WORKSPACE"'
+      - init
+      - plan
+    apply:
+      steps:
+      - env:
+          name: TF_WORKSPACE
+          command: 'echo "$WORKSPACE"'
+      - apply
